@@ -1,5 +1,8 @@
 {
   "users": [
+
+    {"id": "23", "firstName": "peter", "age": 18, "companyId": "1"},
+    {"id": "42", "firstName": "parker", "age": 27, "companyId": "2"},
     {
       "id": "40",
       "firstName": "Alex",
@@ -17,6 +20,13 @@
       "age": 25,
       "companyId": "1",
       "id": "S1TKHzuwl"
+    },
+    {
+      "id": "25",
+      "firstName" : "t-1000",
+      "age": 0,
+      "companyId": "3"
+
     }
   ],
   "companies": [
@@ -29,6 +39,11 @@
       "id": "2",
       "name": "Google",
       "description": "search"
+    },
+    {
+      "id": "3",
+      "name" : "skynet",
+      "description" : "cleanse"
     }
   ]
 }

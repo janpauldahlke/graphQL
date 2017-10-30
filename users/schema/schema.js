@@ -16,14 +16,15 @@ const {
 } = graphql;
 
 
-
-//--data objec
-// const users = [
-//     {id: '23', firstName: 'peter', age: 18},
-//     {id: '42', firstName: 'parker', age: 27}
-// ];
-
-//----
+//beware // if user should contain company, companytype needs to be declared ABOVE UserType!!!
+const CompanyType = new GraphQLObjectType({
+    name: 'Company',
+    fields: {
+        id: {type : GraphQLString},
+        name: {type : GraphQLString},
+        description : {type : GraphQLString}
+    }
+});
 
 //instructs graphql how user looks like
 const UserType = new GraphQLObjectType({
@@ -31,11 +32,22 @@ const UserType = new GraphQLObjectType({
     fields: {
       id: { type: GraphQLString} ,
       firstName:{ type: GraphQLString},
-      age: { type: GraphQLInt}
+      age: { type: GraphQLInt},
+      company: {
+          type: CompanyType,
+          //resolve populates companyID from jsonDB to UserType field: company
+          resolve(parentValue, args) {
+
+              return axios.get(`${serveJSONDb}/companies/${parentValue.companyId}`)
+                  .then(response => response.data);
+          }
+      }
     }
 });
 
-//apply root Query, as entry fpr graph
+
+
+//apply root Query, as entry for graph
 
 const RootQuery = new GraphQLObjectType({
     name : 'RootQueryType',
@@ -45,6 +57,8 @@ const RootQuery = new GraphQLObjectType({
         args: { id : { type: GraphQLString } },  // what the root query is beeing asked for
         //vip function in graph,
         //grab real data and not just a TypeDefinition
+
+          //resolve can fetch from anywhere
         resolve(parentValue, args) {
           //not dynamic yet but hardcoded
           //using lodash like...
