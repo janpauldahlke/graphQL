@@ -6,7 +6,7 @@ const port = 4000;
 const app = express();
 
 app.use('/graphql', expressGraphQL({
-  schema: schema,
+  schema,
   graphiql: true
 }));
 

@@ -2,34 +2,35 @@
 //hard code style // difficult to read, BUT
 //repetitive
 
-const _ = require('lodash');
-
-
+//const _ = require('lodash');
 const graphql = require('graphql');
+const axios = require('axios');
+
+const serveJSONDb = 'http://localhost:3000';
+
 const {
   GraphQLObjectType,
-    GraphQLString,
-    GraphQLInt,
-    GraphQLSchema
+  GraphQLString,
+  GraphQLInt,
+  GraphQLSchema
 } = graphql;
 
 
 
 //--data objec
-const users = [
-    {id: '23', name: 'peter', age: 18},
-    {id: '42', name: 'parker', age: 27}
-]
+// const users = [
+//     {id: '23', firstName: 'peter', age: 18},
+//     {id: '42', firstName: 'parker', age: 27}
+// ];
 
 //----
 
 //instructs graphql how user looks like
 const UserType = new GraphQLObjectType({
     name: 'User',
-//fields need types and GraphQl has types , so import them via desctructering
     fields: {
       id: { type: GraphQLString} ,
-      firstName:{ type: GraphQLString} ,
+      firstName:{ type: GraphQLString},
       age: { type: GraphQLInt}
     }
 });
@@ -47,7 +48,12 @@ const RootQuery = new GraphQLObjectType({
         resolve(parentValue, args) {
           //not dynamic yet but hardcoded
           //using lodash like...
-          return _.find(users, {id: args.id})
+          //return _.find(users, {id: args.id})
+
+          //point to localhost:3000 / where JSON-server servers
+            return axios.get(`http://localhost:3000/users/${args.id}`)
+                .then(response => response.data) //bind axios data to promise
+
         }
       }
     }
@@ -57,4 +63,4 @@ const RootQuery = new GraphQLObjectType({
 //pass it a RootQuery
 module.exports = new GraphQLSchema ({
     query: RootQuery
-})
+});
