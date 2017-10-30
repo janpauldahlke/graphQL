@@ -65,10 +65,27 @@ const RootQuery = new GraphQLObjectType({
           //return _.find(users, {id: args.id})
 
           //point to localhost:3000 / where JSON-server servers
-            return axios.get(`http://localhost:3000/users/${args.id}`)
+            return axios.get(`${serveJSONDb}/users/${args.id}`)
                 .then(response => response.data) //bind axios data to promise
 
         }
+      },
+        //repeat and works allows querries like
+        /*
+        {
+          company(id:"1") {
+            name,
+            description
+          }
+        }
+        * */
+      company: {
+          type: CompanyType,
+          args: { id: { type: GraphQLString } },
+          resolve(parentValue, args) {
+              return axios.get(`${serveJSONDb}/companies/${args.id}`)
+                  .then(res => res.data);
+          }
       }
     }
 });
