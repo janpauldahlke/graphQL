@@ -69,6 +69,51 @@ const UserType = new GraphQLObjectType({
 * }
 *
 * */
+/*
+ask twice for the same entity , but assign it a key before like this
+
+query findCompany{
+  google:company(id:"2") {
+
+    name,
+    description
+  }
+
+  apple:company(id:"1") {
+
+    name,
+    description
+  }
+}
+
+ */
+/* user fragments like this
+* query findCompany{
+  google:company(id:"2") {
+    ...companyDetails
+  }
+
+
+  apple:company(id:"1") {
+    ...companyDetails,
+  }
+
+
+}
+
+fragment companyDetails on Company {
+  id
+  name,
+  description,
+}
+
+
+*
+*
+*
+* */
+
+
 
 /*
 * bidirectional linking allows really stopid things like this query
@@ -99,7 +144,6 @@ const UserType = new GraphQLObjectType({
 *
 *
 * */
-
 
 //apply root Query, as entry for graph
 
