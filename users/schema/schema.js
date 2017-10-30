@@ -12,18 +12,26 @@ const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLInt,
-  GraphQLSchema
+  GraphQLSchema,
+  GraphQLList
 } = graphql;
 
 
 //beware // if user should contain company, companytype needs to be declared ABOVE UserType!!!
 const CompanyType = new GraphQLObjectType({
     name: 'Company',
-    fields: {
+    fields: () => ({
         id: {type : GraphQLString},
         name: {type : GraphQLString},
-        description : {type : GraphQLString}
-    }
+        description : {type : GraphQLString},
+        users : {
+            type: new GraphQLList(UserType), // tell graph that this will return a list of users // not defined so... nodemon crashes //Classic js error, do not try to make use of a variable before its declaration // to solve this. wrap your fields template into an arrow function to return an object on callback/closure
+            resolve(parentValue, args) {
+                return axios.get(`${serveJSONDb}/companies/${parentValue.id}/users`)
+                    .then(resp => resp.data)
+            }
+        }
+    })
 });
 
 //instructs graphql how user looks like
@@ -33,6 +41,7 @@ const UserType = new GraphQLObjectType({
       id: { type: GraphQLString} ,
       firstName:{ type: GraphQLString},
       age: { type: GraphQLInt},
+    //this is an unidirectional link
       company: {
           type: CompanyType,
           //resolve populates companyID from jsonDB to UserType field: company
