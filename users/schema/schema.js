@@ -34,6 +34,8 @@ const CompanyType = new GraphQLObjectType({
     })
 });
 
+
+
 //instructs graphql how user looks like
 const UserType = new GraphQLObjectType({
     name: 'User',
@@ -54,6 +56,49 @@ const UserType = new GraphQLObjectType({
     })
 });
 
+
+/*
+* one can name queries like this
+* query namedQuery {
+*   foo,
+*   bar,
+*   user {
+*       faz,
+*       foz
+*   }
+* }
+*
+* */
+
+/*
+* bidirectional linking allows really stopid things like this query
+* {
+  company(id:"2") {
+    id
+    name,
+    description
+    users {
+      firstName,
+      age,
+      id
+      company {
+        name,
+        users {
+          age,
+          company {
+            name,
+            users {
+              firstName
+            }
+          }
+        }
+      }
+    }
+  }
+}
+*
+*
+* */
 
 
 //apply root Query, as entry for graph
