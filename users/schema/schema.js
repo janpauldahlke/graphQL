@@ -13,7 +13,8 @@ const {
   GraphQLString,
   GraphQLInt,
   GraphQLSchema,
-  GraphQLList
+  GraphQLList,
+  GraphQLNonNull
 } = graphql;
 
 
@@ -188,8 +189,44 @@ const RootQuery = new GraphQLObjectType({
     })
 });
 
+
+//mutations here that allow to alter user/company // add/delete/put etc
+
+const mutation = new GraphQLObjectType({
+  name : 'Mutation',
+  fields: () => ({
+    //add user
+    addUser : {
+      type:  UserType,  //type of return from resolve
+      args: {
+        firstName : { type: new GraphQLNonNull(GraphQLString) }, //to prevent thesefrom beegin null, use helper graphQL not null
+        age: { type: new GraphQLNonNull(GraphQLInt) },
+        companyId: { type: GraphQLString }
+      }, //data we pass into resolve
+      resolve(parentValue, args) {
+        return axios.post(`${serveJSONDb}/users`, {
+          firstName: args.firstName,
+          age: args.age
+        }).then(res => res.data)
+      }
+    }
+  })
+})
+
+/*
+syntax is:
+mutation addUser {
+  addUser(firstName:"Pauline", age:39){
+    id,
+    firstName,
+    age
+  }
+}
+*/
+
 //merge Types into a GeraphQLSchema
 //pass it a RootQuery
 module.exports = new GraphQLSchema ({
-    query: RootQuery
+    query: RootQuery,
+    mutation: mutation
 });
