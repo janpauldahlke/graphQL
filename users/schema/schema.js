@@ -231,10 +231,11 @@ const mutation = new GraphQLObjectType({
 
       },
       resolve(parentValue, args){
-        return axios.put(`${serveJSONDb}/users/${args.id}`, {
-          firstName: (args.firstName.length <= 0) ? parentValue.firstName : args.firstName,
-          age: (args.age <= 0) ? parentValue.age : args.age,
-          companyId : (args.companyId.length <= 0) ? parentValue.companyId : args.companyId
+        //axios put is wrong here, one should use patch
+        return axios.patch(`${serveJSONDb}/users/${args.id}`, {
+          firstName:  args.firstName,
+          age:  args.age,
+          companyId : args.companyId
         }).then(response => response.data)
       }
     }
