@@ -209,6 +209,17 @@ const mutation = new GraphQLObjectType({
           age: args.age
         }).then(res => res.data)
       }
+    },
+    deleteUser: {
+      type: UserType,
+      args: {
+        id: {type: new GraphQLNonNull(GraphQLString)}
+      },
+      resolve(parentValue, args) {
+        return axios.delete(`${serveJSONDb}/users/${args.id}`, {
+          id: args.id
+        }).then(res => res.data)
+      }
     }
   })
 })
