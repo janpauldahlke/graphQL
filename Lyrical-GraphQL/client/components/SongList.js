@@ -1,16 +1,57 @@
 import React, {Component} from 'react';
+import gql from 'graphql-tag'; // helper that allows to write gqueries in jsx files
+import {graphql} from 'react-apollo'; // helper that bounds component and query to execute against server
+import _ from 'lodash';
 
 class SongList extends Component {
 
-    render() {
-        return (
-            <div className="row songlist">
-                <div className="col-12">
-                    foorem
-                </div>
-            </div>
+    renderSongs() {
+
+        return _.map(this.props.data.songs, (song) => {
+
+                return (
+                    <li key={song.id} className="card">
+                        {song.title}
+                    </li>
+                );
+            }
         );
+    }
+
+    render() {
+
+        if(this.props.data.loading){
+            return <div>loading.....</div>
+        }
+
+        if(!this.props.data.loading && this.props.data.songs.length > 0){
+
+            const {songs} = this.props.data;
+
+            return (
+                <div className="row songlist">
+                    <div className="col-12">
+                        <h5>FOOBAR</h5>
+                        <ul>
+                            {this.renderSongs()}
+
+                        </ul>
+                    </div>
+                </div>
+            );
+        }
     }
 }
 
-export default SongList;
+//adventurours syntax one might think gql ``
+const ListSongsQuery = gql`
+    query ListSongs{
+            songs{
+                title,
+                id
+            }
+        }
+`;
+
+//redux like connect flatten object
+export default graphql(ListSongsQuery)(SongList);

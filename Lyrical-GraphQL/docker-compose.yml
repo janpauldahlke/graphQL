@@ -6,3 +6,6 @@ services:
     image: "mongo:latest"
     ports:
       - "4000:27017"
+    #placehold set volume here
+    volumes:
+          - "/home/jan.dahlke/dev/docker/graphQLDB/dbstore:/data/db"
