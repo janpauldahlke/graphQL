@@ -1,0 +1,8 @@
+#create a mongo db
+
+version: "3.1"
+services:
+  graphmongo:
+    image: "mongo:latest"
+    ports:
+      - "4000:27017"
