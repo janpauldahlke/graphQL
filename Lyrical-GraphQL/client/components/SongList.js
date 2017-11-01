@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-class SongList extends Component{
-
+class SongList extends Component {
 
     render() {
-       return (
-           <div>
-               songlist goes here
-           </div>
-       );
+        return (
+            <div className="row songlist">
+                <div className="col-12">
+                    foorem
+                </div>
+            </div>
+        );
     }
 }
 
