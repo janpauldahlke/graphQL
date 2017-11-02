@@ -2,10 +2,12 @@ import './style/style.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Router, Route, hashHistory, IndexRoute} from 'react-router'; //v3 because stable
 
 import ApolloClient from 'apollo-client'; //completly agnostic to react/angular etc
 import {ApolloProvider} from 'react-apollo'; // here comes the react-wrapper "glue-layer"
 
+import App from './components/App';
 import SongList from './components/SongList';
 
 
@@ -13,16 +15,20 @@ import SongList from './components/SongList';
 
 const client = new ApolloClient({});
 
+// its better if Router is child of ApolloProvider
+
 const Root = () => {
     return (
         <ApolloProvider client={client}>
-            <section className="container">
 
-                <h3>RANDOM HEADLINE</h3>
+                <Router history={hashHistory}>
 
-                <SongList />
+                    <Route path="/" component={App}>
+                        <IndexRoute component={SongList} />
+                    </Route>
 
-            </section>
+                </Router>
+
         </ApolloProvider>
     );
 };

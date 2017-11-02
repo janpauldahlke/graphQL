@@ -10,7 +10,7 @@ class SongList extends Component {
         return _.map(this.props.data.songs, (song) => {
 
                 return (
-                    <li key={song.id} className="card">
+                    <li key={song.id} className="list-group-item">
                         {song.title}
                     </li>
                 );
@@ -30,12 +30,12 @@ class SongList extends Component {
 
             return (
                 <div className="row songlist">
-                    <div className="col-12">
-                        <h5>FOOBAR</h5>
-                        <ul>
-                            {this.renderSongs()}
+                    <div className="col-12 card song-list">
 
+                        <ul className="list-group">
+                            {this.renderSongs()}
                         </ul>
+
                     </div>
                 </div>
             );
