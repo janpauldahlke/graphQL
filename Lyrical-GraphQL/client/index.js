@@ -9,6 +9,7 @@ import {ApolloProvider} from 'react-apollo'; // here comes the react-wrapper "gl
 
 import App from './components/App';
 import SongList from './components/SongList';
+import SongCreate from './components/SongCreate';
 
 
 //------------------
@@ -25,6 +26,7 @@ const Root = () => {
 
                     <Route path="/" component={App}>
                         <IndexRoute component={SongList} />
+                        <Route path="song/new" component={SongCreate} />
                     </Route>
 
                 </Router>
@@ -37,4 +39,3 @@ ReactDOM.render(
     <Root />,
     document.querySelector('#root')
 );
-
