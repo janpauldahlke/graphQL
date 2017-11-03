@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-
+import gql from 'graphql-tag';
+import {graphql} from 'react-apollo';
 
 
 class SongCreate extends Component {
@@ -11,17 +12,22 @@ class SongCreate extends Component {
     }
   }
 
+handleSubmit(e){
+  e.preventDefault();
+
+
+}
 
 
 render() {
-
     //control structure
     //console.log('state', this.state.title)
-
       return (
         <div>
           <h5>New Song</h5>
-          <form>
+          <form
+            onSubmit={this.handleSubmit.bind(this)}
+            >
             <label>create new song:</label>
             <input className="form-control"
               onChange={(e) => {
@@ -35,4 +41,15 @@ render() {
   }
 }
 
-export default SongCreate;
+//problem how to get the state from component into the outside const ?
+//query variables will come into play
+//they demand another syntax on wrting mutations
+const createSongMutation = gql`
+ mutation{
+   addSong(title : ${}){
+     id
+   }
+ }
+`;
+
+export default SongCreate(createSongMutation)(SongCreate);
