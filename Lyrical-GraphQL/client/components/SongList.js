@@ -9,6 +9,8 @@ class SongList extends Component {
 
         return _.map(this.props.data.songs, (song) => {
 
+            console.log(song.id);
+
                 return (
                     <li key={song.id} className="card">
                         {song.title}
