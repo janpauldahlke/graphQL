@@ -15,6 +15,13 @@ class SongCreate extends Component {
 handleSubmit(e){
   e.preventDefault();
 
+  console.log(this.props)
+
+  this.props.mutate({
+    variables: {
+      title: this.state.title
+    }
+  })
 
 }
 
@@ -44,12 +51,13 @@ render() {
 //problem how to get the state from component into the outside const ?
 //query variables will come into play
 //they demand another syntax on wrting mutations
-const createSongMutation = gql`
- mutation{
-   addSong(title : ${}){
-     id
+const mutation = gql`
+ mutation AddSong($title: String){
+   addSong(title : $title){
+     title
    }
  }
 `;
-
-export default SongCreate(createSongMutation)(SongCreate);
+//query returns props.data
+//mutation return props.mutate
+export default graphql(mutation)(SongCreate);
