@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import gql from 'graphql-tag'; // helper that allows to write gqueries in jsx files
 import {graphql} from 'react-apollo'; // helper that bounds component and query to execute against server
-
 import {Link} from 'react-router';
-
 import _ from 'lodash';
+
+import query from '../queries/fetchSongs';
 
 class SongList extends Component {
 
@@ -55,15 +55,15 @@ class SongList extends Component {
     }
 }
 
-//adventurours syntax one might think gql ``
-const ListSongsQuery = gql`
-    query ListSongs{
-            songs{
-                title,
-                id
-            }
-        }
-`;
+// //adventurours syntax one might think gql ``
+// const ListSongsQuery = gql`
+//     query ListSongs{
+//             songs{
+//                 title,
+//                 id
+//             }
+//         }
+// `;
 
 //redux like connect flatten object
-export default graphql(ListSongsQuery)(SongList);
+export default graphql(query)(SongList);

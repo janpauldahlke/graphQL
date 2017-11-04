@@ -4,6 +4,8 @@ import {graphql} from 'react-apollo';
 
 import {Link, hashHistory} from 'react-router';
 
+import query from '../queries/fetchSongs';
+
 class SongCreate extends Component {
   constructor(props){
     super(props);
@@ -21,10 +23,21 @@ handleSubmit(e){
   this.props.mutate({
     variables: {
       title: this.state.title
-    }
+    },
+
+    //contemplate on this
+    //https://i.imgur.com/j2i838T.png
+    //warm vs cold cache scenario, makes the new entry appear or not on the screen, solve this on meta
+    //a very common problem troughout the entire apollo world!!
+    //refetchQueries helps out here!!!
+    refetchQueries : [{query}]  //one needs named queries for this or write the whole query again, to avoid this, we will now out named querys in a file itself to call them in the entrie project
+
+
   }).then((res) => {
     //console.log('from mutation promise',res);
       hashHistory.push('/')
+
+
     //handle user percepion, by adding loading spinner, while load
   }).catch((error) => {
     //if there is an error validation an server, we can throw it back here
