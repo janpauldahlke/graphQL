@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
 
-import {Link} from 'react-router';
+import {Link, hashHistory} from 'react-router';
 
 class SongCreate extends Component {
   constructor(props){
@@ -22,7 +22,15 @@ handleSubmit(e){
     variables: {
       title: this.state.title
     }
+  }).then((res) => {
+    //console.log('from mutation promise',res);
+      hashHistory.push('/')
+    //handle user percepion, by adding loading spinner, while load
+  }).catch((error) => {
+    //if there is an error validation an server, we can throw it back here
   })
+
+
   //reset state to clear value
   //this.setState({title: ''})
 
