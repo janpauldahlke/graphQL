@@ -4,9 +4,21 @@ import {graphql} from 'react-apollo'; // helper that bounds component and query 
 import {Link} from 'react-router';
 import _ from 'lodash';
 
+//apollo know that the query wold run twice in case of create and doesnt DO it, nice and clean
 import fetchSongsQuery from '../queries/fetchSongs';
+import deleteSong from '../queries/deleteSong';
 
 class SongList extends Component {
+
+    onSongDelete(id) {
+
+      this.props.mutate({
+        variables : {
+          id: id
+        },
+        refetchQueries: [{query: fetchSongsQuery}]
+      })
+    }
 
     renderSongs() {
 
@@ -14,9 +26,16 @@ class SongList extends Component {
 
             //console.log(song.id);
 
+            const that = this;
+
                 return (
                     <li key={song.id} className="list-group-item">
                         {song.title}
+                        <div
+                          onClick={() => {
+                            this.onSongDelete(song.id)}}
+                          className="btn btn-danger btn-sm float-right"
+                          >delete</div>
                     </li>
                 );
             }
@@ -55,15 +74,12 @@ class SongList extends Component {
     }
 }
 
-// //adventurours syntax one might think gql ``
-// const ListSongsQuery = gql`
-//     query ListSongs{
-//             songs{
-//                 title,
-//                 id
-//             }
-//         }
-// `;
-
 //redux like connect flatten object
-export default graphql(fetchSongsQuery)(SongList);
+
+//to bad this isntn working
+//export default ([deleteSong, fetchSongsQuery])(SongList);
+
+//syntax is qt lol rough spot
+export default graphql(deleteSong)(
+  graphql(fetchSongsQuery)(SongList)
+);
