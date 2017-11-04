@@ -37,11 +37,11 @@ class SongList extends Component {
                 <div className="row songlist">
                     <div className="col-12 card song-list">
 
-                      <Link to="song/new">
+                      <Link to="songs/new">
                           <div className="btn btn-success">add new song</div>
                       </Link>
 
-                      
+
                       <br />
 
                         <ul className="list-group">
