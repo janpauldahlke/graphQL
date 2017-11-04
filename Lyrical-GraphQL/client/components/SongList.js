@@ -4,7 +4,7 @@ import {graphql} from 'react-apollo'; // helper that bounds component and query 
 import {Link} from 'react-router';
 import _ from 'lodash';
 
-import query from '../queries/fetchSongs';
+import fetchSongsQuery from '../queries/fetchSongs';
 
 class SongList extends Component {
 
@@ -66,4 +66,4 @@ class SongList extends Component {
 // `;
 
 //redux like connect flatten object
-export default graphql(query)(SongList);
+export default graphql(fetchSongsQuery)(SongList);

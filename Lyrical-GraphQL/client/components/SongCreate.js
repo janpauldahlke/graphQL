@@ -4,7 +4,7 @@ import {graphql} from 'react-apollo';
 
 import {Link, hashHistory} from 'react-router';
 
-import query from '../queries/fetchSongs';
+import fetchSongsQuery from '../queries/fetchSongs';
 
 class SongCreate extends Component {
   constructor(props){
@@ -30,7 +30,7 @@ handleSubmit(e){
     //warm vs cold cache scenario, makes the new entry appear or not on the screen, solve this on meta
     //a very common problem troughout the entire apollo world!!
     //refetchQueries helps out here!!!
-    refetchQueries : [{query}]  //one needs named queries for this or write the whole query again, to avoid this, we will now out named querys in a file itself to call them in the entrie project
+    refetchQueries : [{query: fetchSongsQuery}]  //one needs named queries for this or write the whole query again, to avoid this, we will now out named querys in a file itself to call them in the entrie project
 
 
   }).then((res) => {
