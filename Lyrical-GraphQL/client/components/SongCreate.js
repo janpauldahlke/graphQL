@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
 
+import {Link} from 'react-router';
+
 class SongCreate extends Component {
   constructor(props){
     super(props);
@@ -21,6 +23,10 @@ handleSubmit(e){
       title: this.state.title
     }
   })
+  //reset state to clear value
+  //this.setState({title: ''})
+
+
 }
 
 render() {
@@ -29,6 +35,11 @@ render() {
       return (
         <div>
           <h5>New Song</h5>
+
+          <Link to="/">
+            <div className="btn btn-success">back to list</div>
+          </Link>
+
           <form
             onSubmit={this.handleSubmit.bind(this)}
             >

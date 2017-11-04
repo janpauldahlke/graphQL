@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import gql from 'graphql-tag'; // helper that allows to write gqueries in jsx files
 import {graphql} from 'react-apollo'; // helper that bounds component and query to execute against server
+
+import {Link} from 'react-router';
+
 import _ from 'lodash';
 
 class SongList extends Component {
@@ -33,6 +36,13 @@ class SongList extends Component {
             return (
                 <div className="row songlist">
                     <div className="col-12 card song-list">
+
+                      <Link to="song/new">
+                          <div className="btn btn-success">add new song</div>
+                      </Link>
+
+                      
+                      <br />
 
                         <ul className="list-group">
                             {this.renderSongs()}
