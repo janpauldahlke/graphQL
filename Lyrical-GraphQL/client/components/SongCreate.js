@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
 
-
 class SongCreate extends Component {
   constructor(props){
     super(props);
@@ -22,9 +21,7 @@ handleSubmit(e){
       title: this.state.title
     }
   })
-
 }
-
 
 render() {
     //control structure
