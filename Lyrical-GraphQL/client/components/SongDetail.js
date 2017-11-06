@@ -2,15 +2,19 @@ import React, {Component} from 'react';
 import {graphql} from 'react-apollo'; // import graphql from 'react-apollo'; will produce an error, care about this sh1t !!!
 import {Link} from 'react-router';
 
+import LyricCreate from './LyricCreate';
+
 import getSongQuery from '../queries/fetchSongByID';
 
 class SongDetail extends Component {
 
     render() {
         //let me see you naked
-        //console.log(!this.props.data.song)
+        console.log(this.props.data.song)
 
         const {song} = this.props.data;
+        let keyCount = 0;
+
 
         if (!song) { // maybe its better to ask for this.props.loading !
             return (
@@ -27,7 +31,26 @@ class SongDetail extends Component {
                     <br/>
                     <p>Title: {song.title}</p>
                     <p>Id: {song.id}</p>
+
+                    <ul>
+                        {song.lyrics.map((item) => {
+                            keyCount = keyCount +1;
+
+                            return(
+                                <li key={song.id+keyCount} className="list-group-item">
+                                    {item.content}
+                                </li>
+                            )
+                        })}
+                    </ul>
+
                 </div>
+
+                <br/>
+                <div className="card">
+                    <LyricCreate id={song.id}/>
+                </div>
+                <br/>
             </div>
         )
 
