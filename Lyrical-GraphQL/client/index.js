@@ -10,6 +10,7 @@ import {ApolloProvider} from 'react-apollo'; // here comes the react-wrapper "gl
 import App from './components/App';
 import SongList from './components/SongList';
 import SongCreate from './components/SongCreate';
+import SongDetail from './components/SongDetail';
 
 
 //------------------
@@ -28,6 +29,7 @@ const Root = () => {
                         <IndexRoute component={SongList} />
 
                         <Route path="songs/new" component={SongCreate} />
+                        <Route path="songs/:id" components={SongDetail} />
 
                     </Route>
 
