@@ -1,3 +1,6 @@
 .intelliJ/**
 
 users/node_modules/**
+Lyrical-GraphQL/node_modules/**
+
+.idea/**
