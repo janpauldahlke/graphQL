@@ -38,11 +38,16 @@ class SongList extends Component {
                 return (
                     <li key={song.id} className="list-group-item">
                         {song.title}
+                        <div className="float-right">
+                        <Link
+                            className="btn btn-success btn-sm "
+                            to={'songs/'+song.id}>Detail</Link>
                         <div
                           onClick={() => {
                             this.onSongDelete(song.id)}}
-                          className="btn btn-danger btn-sm float-right"
+                          className="btn btn-danger btn-sm"
                           >delete</div>
+                        </div>
                     </li>
                 );
             }
