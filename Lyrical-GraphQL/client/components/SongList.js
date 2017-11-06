@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
-import gql from 'graphql-tag'; // helper that allows to write gqueries in jsx files
+//import gql from 'graphql-tag'; // helper that allows to write gqueries in jsx files
 import {graphql} from 'react-apollo'; // helper that bounds component and query to execute against server
 import {Link} from 'react-router';
 import _ from 'lodash';
+
+import swal from 'sweetalert';
+
+
 
 //apollo know that the query wold run twice in case of create and doesnt DO it, nice and clean
 import fetchSongsQuery from '../queries/fetchSongs';
@@ -18,6 +22,9 @@ class SongList extends Component {
         },
         refetchQueries: [{query: fetchSongsQuery}]
       })
+
+      swal("deleted", "song deleted", "success");
+
     }
 
     renderSongs() {
