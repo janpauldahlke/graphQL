@@ -6,3 +6,7 @@
 .song-list ul li:hover{
     background: #fffff0;
 }
+
+.song-list a div {
+  width: 100%;
+}
