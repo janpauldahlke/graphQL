@@ -7,15 +7,25 @@ import getSongQuery from '../queries/fetchSongByID';
 class SongDetail extends Component{
 
     render() {
-
         //let me see you naked
-        //console.log(this.props) -> check params object
+        //console.log(!this.props.data.song)
+
+        const { song } = this.props.data
+
+        if(!song){
+            return(
+                <div>Loading..</div>
+            )
+        }
+
 
         return (
             <div className="container">
                 <Link to="/" className="btn btn-success" >Back to Main</Link>
                 <br />
                 <h5>SongDetails:</h5>
+                <p>Title: {song.title}</p>
+                <p>Id: {song.id}</p>
             </div>
         )
 
@@ -28,7 +38,8 @@ class SongDetail extends Component{
 //lol syntax is quite difficulte here, learn this shit eager
 
 export default graphql(getSongQuery, {
-    options: (props) => { return { variables : { id: props.params.id } } }
+    options: (props) => { return { variables : { songId: props.params.id } } }
 })(SongDetail);
+
 
 
