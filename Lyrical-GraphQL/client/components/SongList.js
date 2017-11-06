@@ -60,7 +60,7 @@ class SongList extends Component {
             return <div>loading.....</div>
         }
 
-        if(!this.props.data.loading && this.props.data.songs.length > 0){
+        if(!this.props.data.loading){
 
             const {songs} = this.props.data;
 
@@ -74,15 +74,16 @@ class SongList extends Component {
 
 
                       <br />
-
-                        <ul className="list-group">
-                            {this.renderSongs()}
-                        </ul>
-
-                    </div>
+                        {(this.props.data.songs.length > 0) && (
+                          <ul className="list-group">
+                              {this.renderSongs()}
+                          </ul>
+                        )}
+                        </div>
                 </div>
             );
         }
+
     }
 }
 

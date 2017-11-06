@@ -30,8 +30,8 @@ class Likes extends Component {
 
 //-------------------
   render(){
-
-    console.log('likesProps', this.props)
+    //show titties
+    //console.log('likesProps', this.props)
 
     return(
       <div className="row">

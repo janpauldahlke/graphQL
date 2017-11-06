@@ -15,7 +15,10 @@ import SongDetail from './components/SongDetail';
 
 //------------------
 
-const client = new ApolloClient({});
+const client = new ApolloClient({
+  //every piece of information in the client gets an ID
+  dataIdFomObject : o => o.id
+});
 
 // its better if Router is child of ApolloProvider then the other way round
 
