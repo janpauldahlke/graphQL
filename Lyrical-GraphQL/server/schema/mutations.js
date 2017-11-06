@@ -28,11 +28,18 @@ const mutation = new GraphQLObjectType({
         return Song.addLyric(songId, content);
       }
     },
-    likeLyric: {
+    addLikeLyric: {
       type: LyricType,
       args: { id: { type: GraphQLID } },
       resolve(parentValue, { id }) {
-        return Lyric.like(id);
+        return Lyric.addlike(id);
+      }
+    },
+    removeLikeLyric: {
+      type: LyricType,
+      args : {id : {type : GraphQLID}},
+      resolve(parentValue, {id}) {
+        return Lyric.removelike(id);
       }
     },
     deleteSong: {

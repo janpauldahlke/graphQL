@@ -10,12 +10,22 @@ const LyricSchema = new Schema({
   content: { type: String }
 });
 
-LyricSchema.statics.like = function(id) {
+LyricSchema.statics.addlike = function(id) {
   const Lyric = mongoose.model('lyric');
 
   return Lyric.findById(id)
     .then(lyric => {
       ++lyric.likes;
+      return lyric.save();
+    })
+}
+
+LyricSchema.statics.removelike = function(id) {
+  const Lyric = mongoose.model('lyric');
+
+  return Lyric.findById(id)
+    .then(lyric => {
+      --lyric.likes;
       return lyric.save();
     })
 }

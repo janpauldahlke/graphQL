@@ -3,8 +3,10 @@ import {graphql} from 'react-apollo'; // import graphql from 'react-apollo'; wil
 import {Link} from 'react-router';
 
 import LyricCreate from './LyricCreate';
+import Likes from './Likes';
 
 import getSongQuery from '../queries/fetchSongByID';
+
 
 class SongDetail extends Component {
 
@@ -39,6 +41,7 @@ class SongDetail extends Component {
                             return(
                                 <li key={song.id+keyCount} className="list-group-item">
                                     {item.content}
+                                    <Likes />
                                 </li>
                             )
                         })}
