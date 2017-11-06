@@ -12,7 +12,7 @@ class SongDetail extends Component {
 
     render() {
         //let me see you naked
-        //console.log(this.props.data.song)
+        //console.log('detailProps',this.props.data.song)
 
         const {song} = this.props.data;
         let keyCount = 0;
@@ -35,13 +35,16 @@ class SongDetail extends Component {
                     <p>Id: {song.id}</p>
 
                     <ul>
-                        {song.lyrics.map((item) => {
+                        {song.lyrics.map((lyric) => {
                             keyCount = keyCount +1;
 
                             return(
                                 <li key={song.id+keyCount} className="list-group-item">
-                                    {item.content}
-                                    <Likes />
+                                    {lyric.content}
+                                    <Likes
+                                      lyricId={lyric.id}
+                                      songId={song.id}
+                                      likes={lyric.likes}/>
                                 </li>
                             )
                         })}

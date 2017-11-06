@@ -6,7 +6,9 @@ query GetSongByID($songId:ID!){
     id,
     title,
     lyrics {
-        content
+      id,
+      content,
+      likes
     }
   }
 }
