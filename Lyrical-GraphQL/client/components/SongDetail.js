@@ -8,7 +8,7 @@ class SongDetail extends Component{
     render() {
 
         //let me see you naked
-        console.log(this.props)
+        //console.log(this.props)
 
         return (
             <div className="container">
@@ -22,3 +22,5 @@ class SongDetail extends Component{
 }
 
 export default SongDetail;
+
+
