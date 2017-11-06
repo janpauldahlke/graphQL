@@ -19,8 +19,6 @@ class SongCreate extends Component {
 handleSubmit(e){
   e.preventDefault();
 
-  console.log(this.props)
-
   this.props.mutate({
     variables: {
       title: this.state.title
@@ -91,4 +89,3 @@ const mutation = gql`
 //query returns props.data
 //mutation return props.mutate
 export default graphql(mutation)(SongCreate);
-

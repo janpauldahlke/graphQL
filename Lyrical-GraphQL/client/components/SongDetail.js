@@ -10,7 +10,7 @@ class SongDetail extends Component {
 
     render() {
         //let me see you naked
-        console.log(this.props.data.song)
+        //console.log(this.props.data.song)
 
         const {song} = this.props.data;
         let keyCount = 0;
@@ -68,6 +68,3 @@ export default graphql(getSongQuery, {
         return {variables: {songId: props.params.id}}
     }
 })(SongDetail);
-
-
-
