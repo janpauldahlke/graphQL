@@ -27,11 +27,14 @@ class LyricCreate extends Component{
             variables : {
                 songId: id,
                 content: content
-            },
-            refetchQueries: [{query: getSongQuery, variables: {songId: id}}]
+            }
+            //this is where dataIdFromObject is working, but we need to fetch all, that the nested component might need
+            //so we could aviod refetching here
+            //its not 100% clear so to say
+            //refetchQueries: [{query: getSongQuery, variables: {songId: id}}]
+        }).then(() =>  {
+            this.setState({ content: ''});
         })
-
-        this.setState({ content: ''})
     }
 
     onFormSubmit (e) {
@@ -39,12 +42,9 @@ class LyricCreate extends Component{
        this.addLyricLine(this.props.id, this.state.content)
     }
 
-
     render(){
-
         //nudicity on state
         //console.log(this.state.content);
-
         return(
             <div>
                 <h5>Add new Lyrics:</h5>

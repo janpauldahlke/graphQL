@@ -4,7 +4,6 @@ export default gql`
 mutation addLikesToGivenLyric($lyricId: ID){
   addLikeLyric(id: $lyricId) {
     id,
-    content,
     likes
   }
 }

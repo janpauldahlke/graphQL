@@ -7,19 +7,34 @@ import getSongQuery from '../queries/fetchSongByID';
 
 class Likes extends Component {
 
+
   onAddLikeClick(){
 
-    this.props.addLikesToGivenLyric({
+    let optimisticLikes = this.props.likes;
+
+    this.props.addLikeLyric({
       variables: {
         lyricId: this.props.lyricId
       },
-      refetchQueries: [{query: getSongQuery, variables: {songId: this.props.songId}}]
+      optimisticResponse: {
+        __typename: 'Mutation',
+        addLikeLyric : {
+          id : this.props.lyricId,
+          __typename: 'LyricType',
+          likes: optimisticLikes+1
+        }
+      }
+
+        //this is how to make use of an optimistic update and avoid refetching again and again
+      //refetchQueries: [{query: getSongQuery, variables: {songId: this.props.songId}}]
     })
   }
 
   onRemoveLikeClick(){
 
-    this.props.removeLikesFromGivenLyric({
+      console.log('call Remove Click')
+
+    this.props.removeLikeLyric({
       variables: {
         lyricId: this.props.lyricId
       },
@@ -31,7 +46,7 @@ class Likes extends Component {
 //-------------------
   render(){
     //show titties
-    //console.log('likesProps', this.props)
+    console.log('likesProps', this.props)
 
     return(
       <div className="row">
@@ -48,8 +63,8 @@ class Likes extends Component {
 }
 
 const LikesWithMutations = compose(
-  graphql(addLike, {name: 'addLikesToGivenLyric'}),
-  graphql(removeLike, {name: 'removeLikesFromGivenLyric'})
-)(Likes)
+  graphql(addLike, {name: 'addLikeLyric'}),
+  graphql(removeLike, {name: 'removeLikeLyric'})
+)(Likes);
 
 export default LikesWithMutations;
