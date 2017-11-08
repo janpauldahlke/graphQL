@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {graphql} from 'react-apollo';
 
 import addLyricLineToSong from '../queries/addLyricLineToSong';
-import getSongQuery from '../queries/fetchSongByID';
+//import getSongQuery from '../queries/fetchSongByID';
+//not needed anymore because dataIdFromObject in ApolloProvider
 
 class LyricCreate extends Component{
 

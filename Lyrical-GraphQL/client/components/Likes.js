@@ -23,16 +23,17 @@ class Likes extends Component {
           __typename: 'LyricType',
           likes: optimisticLikes+1
         }
-      }
+      },
 
         //this is how to make use of an optimistic update and avoid refetching again and again
+        //this should also be done
       //refetchQueries: [{query: getSongQuery, variables: {songId: this.props.songId}}]
     })
   }
 
   onRemoveLikeClick(){
 
-      console.log('call Remove Click')
+      //console.log('call Remove Click')
 
     this.props.removeLikeLyric({
       variables: {
@@ -46,7 +47,7 @@ class Likes extends Component {
 //-------------------
   render(){
     //show titties
-    console.log('likesProps', this.props)
+    //console.log('likesProps', this.props)
 
     return(
       <div className="row">
