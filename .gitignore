@@ -4,3 +4,4 @@ users/node_modules/**
 Lyrical-GraphQL/node_modules/**
 
 .idea/**
+node_modules/

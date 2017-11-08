@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c4438a7-0cf9-4742-81f3-1558713619cd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Lyrical-GraphQL/client/components/Likes.js" afterPath="$PROJECT_DIR$/Lyrical-GraphQL/client/components/Likes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Lyrical-GraphQL/client/components/LyricCreate.js" afterPath="$PROJECT_DIR$/Lyrical-GraphQL/client/components/LyricCreate.js" />
-    </list>
+    <list default="true" id="5c4438a7-0cf9-4742-81f3-1558713619cd" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,6 +13,16 @@
     <splitter split-orientation="horizontal" split-proportion="0.636436">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/.gitignore">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="90">
+                  <caret line="5" column="8" lean-forward="true" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="Likes.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Lyrical-GraphQL/client/components/Likes.js">
               <provider selected="true" editor-type-id="text-editor">
@@ -49,7 +55,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="LyricCreate.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="LyricCreate.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Lyrical-GraphQL/client/components/LyricCreate.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="-558">
@@ -164,31 +170,6 @@
             <path>
               <item name="graphQL" type="b2602c69:ProjectViewProjectNode" />
               <item name="graphQL" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graphQL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graphQL" type="462c0819:PsiDirectoryNode" />
-              <item name="Lyrical-GraphQL" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graphQL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graphQL" type="462c0819:PsiDirectoryNode" />
-              <item name="Lyrical-GraphQL" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graphQL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graphQL" type="462c0819:PsiDirectoryNode" />
-              <item name="Lyrical-GraphQL" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="graphQL" type="b2602c69:ProjectViewProjectNode" />
-              <item name="graphQL" type="462c0819:PsiDirectoryNode" />
-              <item name="Lyrical-GraphQL" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="queries" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -316,12 +297,12 @@
       <updated>1509359638783</updated>
       <workItem from="1509359640221" duration="6935000" />
       <workItem from="1509977720972" duration="7975000" />
-      <workItem from="1510132056848" duration="4610000" />
+      <workItem from="1510132056848" duration="4958000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24727000" />
+    <option name="totallyTimeSpent" value="25075000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
@@ -466,6 +447,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -614,13 +596,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="8" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -789,6 +764,14 @@
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="8" lean-forward="true" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
