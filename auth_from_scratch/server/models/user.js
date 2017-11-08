@@ -34,6 +34,8 @@ UserSchema.pre('save', function save(next) {
 // that hashed password to the one stored in the DB.  Remember that hashing is
 // a one way process - the passwords are never compared in plain text form.
 UserSchema.methods.comparePassword = function comparePassword(candidatePassword, cb) {
+
+  console.log('user desalt', candidatePassword, this.password);
   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
     cb(err, isMatch);
   });
