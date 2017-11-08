@@ -34,6 +34,7 @@ mongoose.connection
 // is stored inside of MongoDB.
 app.use(session({
   resave: true,
+    secret: 'aaabbb',
   saveUninitialized: true,
   store: new MongoStore({
     url: MONGO_URI,
