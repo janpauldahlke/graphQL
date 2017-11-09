@@ -1,19 +1,13 @@
 import React, {Component} from 'react';
 
-// export default ({children}) => {
-//
-//     return <div className="container">
-//         here is app
-//         {children}
-//     </div>
-// }
+import Header from './Header/Header.js';
 
 class App extends Component{
 
     render() {
         return (
             <div>
-
+                <Header/>
                 class Based App
                 {this.props.children}
             </div>
