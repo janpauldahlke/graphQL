@@ -8,6 +8,10 @@ import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 
 import App from './components/App.js';
+import LoginForm from './components/LoginForm.js';
+import SigninForm from './components/SignupForm.js';
+
+
 //
 const netWorkInterface = createNetworkInterface({
     uri: '/graphql',// this refers to auth_from_scratch/server/server.js line 53 '/graphql'
@@ -30,7 +34,8 @@ const Root = () => {
       <ApolloProvider client={client}>
           <Router history={hashHistory}>
               <Route path="/" component={App}>
-
+                <Route path="login" component={LoginForm} />
+                <Route path="signup" component={SigninForm} />
               </Route>
           </Router>
       </ApolloProvider>

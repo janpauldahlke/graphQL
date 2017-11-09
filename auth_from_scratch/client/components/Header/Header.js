@@ -3,15 +3,15 @@ import React, {Component} from 'react';
 import {Link} from 'react-router';
 import {graphql, compose} from 'react-apollo';
 
-import showUser from './../../queries/showUser';
-import logoutUser from '../../mutations/logoutUser';
-import loginUser from './../../mutations/loginUser';
+import showUserQuery from './../../queries/showUser';
+import logoutUserMutation from '../../mutations/logoutUser';
+import loginUserMutation from './../../mutations/loginUser';
 
 
 class Header extends Component {
 
     onLogoutClick(){
-        this.props.logout({refetchQueries: [{query: showUser}]}) // fetchagain style is bad? // no its ok here
+        this.props.mutate({refetchQueries: [{query: showUserQuery}]}) // fetchagain style is bad? // no its ok here
         // no query variables, so simply call it
     }
 
@@ -49,7 +49,7 @@ class Header extends Component {
 
     render() {
 
-        //console.log(this.props)
+        console.log(this.props)
 
 
         return(
@@ -66,15 +66,15 @@ class Header extends Component {
     }
 }
 
-// export default graphql(logOutUser)(
-//     graphql(showUser)(Header)
-// );
+export default graphql(logoutUserMutation)(
+    graphql(showUserQuery)(Header)
+);
 
-const HeaderWithMutations = compose(
-    graphql(showUser, {name: 'showUser'}),
-    graphql(logoutUser, {name: 'logout'}),
-    graphql(loginUser, {name : 'login'})
-
-)(Header);
-
-export default HeaderWithMutations;
+// const HeaderWithMutations = compose(
+//     graphql(showUserQuery, {name: 'showUser'}),
+//     graphql(logoutUserMutation, {name: 'logout'}),
+//     graphql(loginUserMutation, {name : 'login'})
+//
+// )(Header);
+//
+// export default HeaderWithMutations;
