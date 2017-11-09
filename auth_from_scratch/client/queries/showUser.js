@@ -1,8 +1,9 @@
 import gql from 'graphql-tag';
 
 export default gql`
-    query showUser{
-      currentUser {
+    {
+      user {
+        id,
         email
       }
     }

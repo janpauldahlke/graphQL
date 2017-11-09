@@ -10,7 +10,7 @@ const RootQueryType = new GraphQLObjectType({
   name: 'RootQueryType',
   //to start up add a dummy field
   fields: {
-    currentUser : {
+    user : {
       type : UserType,
       resolve(parentValue, args, request){
         //here comes passport into play

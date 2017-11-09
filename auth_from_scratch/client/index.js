@@ -2,13 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, hashHistory, IndexRoute} from 'react-router';
 
-import ApolloClient from 'apollo-client';
+import ApolloClient, { createNetworkInterface } from 'apollo-client';
+//import ApolloClient from 'apollo-client';
+//import {createHttpLink} from 'apollo-link-http';
 import { ApolloProvider } from 'react-apollo';
 
 import App from './components/App.js';
+//
+const netWorkInterface = createNetworkInterface({
+    uri: '/graphql',// this refers to auth_from_scratch/server/server.js line 53 '/graphql'
+    //opts realy matter here and same origin points to same localhost
+    opts: {
+        credentials : 'same-origin' // this sends the cookies
+    }
+});
+
 
 const client = new ApolloClient({
-    dataIdFromObject : o => o.id
+    networkInterface: netWorkInterface,
+    dataIdFromObject : o => o.id,
+//    link
 });
 
 const Root = () => {
