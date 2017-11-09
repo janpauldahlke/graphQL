@@ -19,7 +19,7 @@ const netWorkInterface = createNetworkInterface({
 
 
 const client = new ApolloClient({
-    networkInterface: netWorkInterface,
+    networkInterface: netWorkInterface, //mean typo shit
     dataIdFromObject : o => o.id,
 //    link
 });

@@ -9,33 +9,41 @@ import showUser from './../../queries/showUser';
 
 class Header extends Component {
 
-    render() {
+
+    renderButtons(){
+
+        const {user} = this.props.data
 
         if(this.props.data.loading){
-            return (
+            return(
                 <div></div>
             )
         }
+
+        if(user){
+            return(
+                <button className="waves-effect waves-light btn-large">Log Out</button>
+            )
+        }
+        else{
+           return(
+               <div>
+                   <button className="waves-effect waves-light btn-large">Sign Up</button>
+                   <button className="waves-effect waves-light btn-large">Log In</button>
+               </div>
+           );
+        }
+    }
+
+
+    render() {
 
         return(
 
             <div className="nav-wrapper valign-wrapper" style={{minHeight: "120px", backgroundColor: "#ee6e73"}}>
 
                 <div className="user-login" style={{width: "100%", textAlign : "right"}}>
-
-
-                    {(isNullOrUndefined(this.props.data.user)) && (
-                        <button className="waves-effect waves-light btn-large">Sign Up</button>
-                    )}
-
-                    {(isNullOrUndefined(this.props.data.user)) && (
-                        <button className="waves-effect waves-light btn-large">Log In</button>
-                    )}
-
-                    {(!isNullOrUndefined(this.props.data.user)) && (
-                        <button className="waves-effect waves-light btn-large">Log Out</button>
-                    )}
-
+                    {this.renderButtons()}
                 </div>
 
             </div>
