@@ -8,7 +8,7 @@ class App extends Component{
         return (
             <div>
                 <Header/>
-                class Based App
+                app body
                 {this.props.children}
             </div>
         );
