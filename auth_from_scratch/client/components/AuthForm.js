@@ -51,7 +51,7 @@ class AuthForm extends Component{
             />
           </div>
           <button
-
+              onClick={this.onLogin.bind(this)}
               className="btn-large">Submit</button>
         </form>
       </div>
