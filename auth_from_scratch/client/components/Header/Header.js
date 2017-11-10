@@ -12,11 +12,10 @@ class Header extends Component {
 
     onLogoutClick(){
         this.props.mutate({refetchQueries: [{query: showUserQuery}]}) // fetchagain style is bad? // no its ok here
-        // no query variables, so simply call it
     }
 
     onLoginClick(){
-        //this.props.m
+        //
     }
 
     renderButtons(){
@@ -48,14 +47,10 @@ class Header extends Component {
 
 
     render() {
-
-        console.log(this.props)
-
-
         return(
 
             <div className="nav-wrapper valign-wrapper" style={{minHeight: "120px", backgroundColor: "#ee6e73"}}>
-
+                <Link to="/" className="btn">Home</Link>
                 <div className="user-login" style={{width: "100%", textAlign : "right"}}>
                     {/*<Link to="/" className="brand-logo left btn" >Home</Link>*/}
                     {this.renderButtons()}

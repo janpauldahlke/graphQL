@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
+import { graphql } from 'graphql-tag';
+import AuthForm from './AuthForm.js';
+import loginUserMutation from './../mutations/loginUser';
 
 class LoginForm extends Component{
 
   render(){
     return (
-      <div>
-      loginform
-        <form>
-          <label>enter email</label>
-          <input className="input-field email"/>
-          <label>enter password</label>
-          <input className="input-field password" />
-        </form>
+      <div className="container">
+        <AuthForm />
       </div>
     );
   }
 }
-
-export default LoginForm;
+export default graphql(loginUserMutation)(LoginForm);
