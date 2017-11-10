@@ -6,9 +6,11 @@ class Success extends Component{
     render(){
         return(
             <div className="success">
-                <h5>you have signed up successfully</h5>
+
+                <div>you have signed up successfully and can now enter dashboard</div>
+
                 <Link
-                    className=""
+                    className="btn"
                     to="/dashboard" >Goto DashBoard</Link>
             </div>
         )

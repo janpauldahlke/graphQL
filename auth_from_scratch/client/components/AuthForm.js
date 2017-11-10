@@ -53,7 +53,7 @@ class AuthForm extends Component{
             />
           </div>
           <div className="errors">
-              {this.props.error.map(err => {return(<div key={error}>{error}</div>)})}
+              {this.props.error.map(err => {return(<div key={err}>{err}</div>)})}
           </div>
           <button
               onClick={this.onSubmit.bind(this)}

@@ -24,6 +24,9 @@ class SignupForm extends Component{
     }).then((res) => {
         this.setState({errors: []});
         hashHistory.push('/success');
+    }).catch((error) => {
+        const errors = error.graphQLErrors.map((err) => {return err.message});
+        this.setState({ errors : errors })
     });
   }
 
