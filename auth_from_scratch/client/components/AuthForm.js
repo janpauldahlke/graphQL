@@ -10,10 +10,20 @@ class AuthForm extends Component{
     }
   }
 
+  onLogin(e){
+    e.preventDefault();
+    this.props.onAuthLoginSubmit(this.state); // object because of destructering on the other side
+  }
+
   render(){
+  //show titties
+  //console.log(this.props);
+
     return(
       <div className="row">
-        <form className="col s4">
+        <form
+            onSubmit={this.onLogin.bind(this)}
+            className="col s4">
           <div className="input-field email">
             <label>Email</label>
             <input
@@ -32,7 +42,9 @@ class AuthForm extends Component{
               }}
             />
           </div>
-          <button className="btn-large">Submit</button>
+          <button
+
+              className="btn-large">Submit</button>
         </form>
       </div>
     );

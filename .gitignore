@@ -1,7 +1,9 @@
 
+
 users/node_modules/**
 Lyrical-GraphQL/node_modules/**
 auth_from_scratch/node_modules/**
 
 .idea/**
 node_modules/
+.idea/
