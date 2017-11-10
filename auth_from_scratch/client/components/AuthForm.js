@@ -10,15 +10,16 @@ class AuthForm extends Component{
     }
   }
 
-  onLogin(e){
+  onSubmit(e){
     e.preventDefault();
 
     const {email, password} = this.state;
 
     //this.props.onAuthLoginSubmit(this.state); // object because of destructering on the other side
     //avoid mutation
-    this.props.onAuthLoginSubmit({email, password});
+    this.props.onSubmit({email, password});
   }
+
 
   render(){
   //show titties
@@ -29,7 +30,7 @@ class AuthForm extends Component{
       <div className="row">
 
         <form
-            onSubmit={this.onLogin.bind(this)}
+            onSubmit={this.onSubmit.bind(this)}
             className="col s4">
           <div className="input-field email">
 
@@ -45,8 +46,7 @@ class AuthForm extends Component{
           <div className="input-field password">
 
             <input
-              placeholder="Password"
-              type="password"
+
               value={this.state.password}
               onChange={(e) => {
                 this.setState({password: e.target.value})
@@ -60,7 +60,7 @@ class AuthForm extends Component{
 
                   this.props.error.map(err => {
                     count ++;
-                    console.log(err)
+                    //console.log(err)
                     return(<li
                         className="collection-item red "
                         key={count}>{err}</li>)
@@ -69,7 +69,7 @@ class AuthForm extends Component{
             )}
 
           <button
-              onClick={this.onLogin.bind(this)}
+              onClick={this.onSubmit.bind(this)}
               className="btn-large">Submit</button>
         </form>
       </div>

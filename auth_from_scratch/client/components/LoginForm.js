@@ -18,7 +18,7 @@ class LoginForm extends Component{
   }
 
 
-  onLoginSubmit({email,password}){ //ES2015 here
+  onSubmit({email,password}){ //ES2015 here
 
     this.props.mutate({
         variables: { email, password},
@@ -50,7 +50,7 @@ class LoginForm extends Component{
       <div className="container">
         <h5>Login</h5>
         <AuthForm
-            onAuthLoginSubmit={this.onLoginSubmit.bind(this)}
+            onSubmit={this.onSubmit.bind(this)}
             error={this.state.errors}
         />
       </div>

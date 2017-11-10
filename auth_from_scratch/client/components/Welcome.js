@@ -6,7 +6,7 @@ class Welcome extends Component{
 
     render(){
 
-        console.log('welcome props', this.props)
+        //console.log('welcome props', this.props)
 
         return(
             <div className="welcome">
