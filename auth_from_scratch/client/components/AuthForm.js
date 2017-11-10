@@ -22,10 +22,15 @@ class AuthForm extends Component{
 
   render(){
   //show titties
-  //console.log(this.props);
+  console.log(this.props);
 
     return(
       <div className="row">
+
+          {(this.props.error.length > 0) && (
+              <div>Error: {this.props.error}</div>
+          )}
+
         <form
             onSubmit={this.onLogin.bind(this)}
             className="col s4">
