@@ -15,3 +15,8 @@
     height: calc(100vh - 120px);
     background-color: #3D9970 ;
 }
+
+.success {
+    height: calc(100vh - 120px);
+    background-color: #DFF2BF ;
+}

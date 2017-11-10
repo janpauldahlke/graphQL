@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
+import {hashHistory} from 'react-router';
 
 import AuthForm from './AuthForm.js';
 
@@ -23,9 +24,6 @@ class SignupForm extends Component{
     }).then((res) => {
         this.setState({errors: []});
         hashHistory.push('/success');
-    }).catch((error) => {
-        const errors = error.graphQLErrors.map((err) => {return err.message});
-        this.setState({ errors : errors })
     });
   }
 
