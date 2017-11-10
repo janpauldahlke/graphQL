@@ -29,7 +29,7 @@ class LoginForm extends Component{
 
       .catch((errors) => {
         let error = JSON.parse(JSON.stringify(errors));
-        //console.log(error.message);
+        console.log(error.message);
         this.setState({
             error: error.message
         })

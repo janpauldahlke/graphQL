@@ -27,16 +27,13 @@ class AuthForm extends Component{
     return(
       <div className="row">
 
-          {(this.props.error.length > 0) && (
-              <div>Error: {this.props.error}</div>
-          )}
-
         <form
             onSubmit={this.onLogin.bind(this)}
             className="col s4">
           <div className="input-field email">
 
             <input
+              className="validate"
               placeholder="Email"
               value={this.state.email}
               onChange={(e) => {
@@ -55,6 +52,12 @@ class AuthForm extends Component{
               }}
             />
           </div>
+
+          <br/>
+            {(this.props.error.length > 0) && (
+                <div className="card-panel red lighten-2">{this.props.error} <br/></div>
+            )}
+
           <button
               onClick={this.onLogin.bind(this)}
               className="btn-large">Submit</button>
