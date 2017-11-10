@@ -12,7 +12,12 @@ class AuthForm extends Component{
 
   onLogin(e){
     e.preventDefault();
-    this.props.onAuthLoginSubmit(this.state); // object because of destructering on the other side
+
+    const {email, password} = this.state;
+
+    //this.props.onAuthLoginSubmit(this.state); // object because of destructering on the other side
+    //avoid mutation
+    this.props.onAuthLoginSubmit({email, password});
   }
 
   render(){
@@ -25,8 +30,9 @@ class AuthForm extends Component{
             onSubmit={this.onLogin.bind(this)}
             className="col s4">
           <div className="input-field email">
-            <label>Email</label>
+
             <input
+              placeholder="Email"
               value={this.state.email}
               onChange={(e) => {
                 this.setState({email: e.target.value})
@@ -34,8 +40,10 @@ class AuthForm extends Component{
              />
           </div>
           <div className="input-field password">
-            <label>password</label>
+
             <input
+              placeholder="Password"
+              type="password"
               value={this.state.password}
               onChange={(e) => {
                 this.setState({password: e.target.value})
