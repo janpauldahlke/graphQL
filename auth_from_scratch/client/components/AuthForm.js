@@ -22,7 +22,7 @@ class AuthForm extends Component{
 
   render(){
   //show titties
-    console.log('titties', this.props);
+    //console.log('titties', this.props);
     let count = 0;
 
     return(

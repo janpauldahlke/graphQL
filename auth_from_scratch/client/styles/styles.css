@@ -5,3 +5,13 @@
 .user-login a {
     margin-left: 10px;
 }
+
+.welcome{
+    height: calc(100vh - 120px);
+    background-color: #7FDBFF ;
+}
+
+.dashboard{
+    height: calc(100vh - 120px);
+    background-color: #3D9970 ;
+}

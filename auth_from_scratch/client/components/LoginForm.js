@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import AuthForm from './AuthForm.js';
 
+import {hashHistory} from 'react-router';
+
 import loginUserMutation from './../mutations/loginUser';
 import showUserQuery from './../queries/showUser';
 
@@ -24,7 +26,8 @@ class LoginForm extends Component{
 
     })
       .then((res)=> {
-        this.setState({error: ''})
+        this.setState({errors: []});
+        hashHistory.push('/dashboard');
       })
 
       .catch((error) => {

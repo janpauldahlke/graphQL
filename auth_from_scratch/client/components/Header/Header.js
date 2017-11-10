@@ -1,7 +1,8 @@
 import './../../styles/styles.css';
 import React, {Component} from 'react';
-import {Link} from 'react-router';
-import {graphql, compose} from 'react-apollo';
+import {Link, hashHistory} from 'react-router';
+import {graphql} from 'react-apollo';
+
 
 import showUserQuery from './../../queries/showUser';
 import logoutUserMutation from '../../mutations/logoutUser';
@@ -11,7 +12,8 @@ import loginUserMutation from './../../mutations/loginUser';
 class Header extends Component {
 
     onLogoutClick(){
-        this.props.mutate({refetchQueries: [{query: showUserQuery}]}) // fetchagain style is bad? // no its ok here
+        this.props.mutate({refetchQueries: [{query: showUserQuery}]}); // fetchagain style is bad? // no its ok here
+        hashHistory.push("/");
     }
 
     onLoginClick(){
@@ -52,7 +54,6 @@ class Header extends Component {
             <div className="nav-wrapper valign-wrapper" style={{minHeight: "120px", backgroundColor: "#ee6e73"}}>
                 <Link to="/" className="btn">Home</Link>
                 <div className="user-login" style={{width: "100%", textAlign : "right"}}>
-                    {/*<Link to="/" className="brand-logo left btn" >Home</Link>*/}
                     {this.renderButtons()}
                 </div>
 
@@ -65,11 +66,3 @@ export default graphql(logoutUserMutation)(
     graphql(showUserQuery)(Header)
 );
 
-// const HeaderWithMutations = compose(
-//     graphql(showUserQuery, {name: 'showUser'}),
-//     graphql(logoutUserMutation, {name: 'logout'}),
-//     graphql(loginUserMutation, {name : 'login'})
-//
-// )(Header);
-//
-// export default HeaderWithMutations;
