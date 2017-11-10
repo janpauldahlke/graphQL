@@ -11,7 +11,7 @@ class LoginForm extends Component{
     super(props);
 
     this.state = {
-      error: ''
+      errors: []
     }
   }
 
@@ -27,12 +27,9 @@ class LoginForm extends Component{
         this.setState({error: ''})
       })
 
-      .catch((errors) => {
-        let error = JSON.parse(JSON.stringify(errors));
-        console.log(error.message);
-        this.setState({
-            error: error.message
-        })
+      .catch((error) => {
+        const errors = error.graphQLErrors.map((err) => {return err.message});
+        this.setState({ errors : errors })
       });
   }
 
@@ -51,7 +48,7 @@ class LoginForm extends Component{
         <h5>Login</h5>
         <AuthForm
             onAuthLoginSubmit={this.onLoginSubmit.bind(this)}
-            error={this.state.error}
+            error={this.state.errors}
         />
       </div>
     );

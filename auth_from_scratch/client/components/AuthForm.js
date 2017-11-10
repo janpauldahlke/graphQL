@@ -22,7 +22,8 @@ class AuthForm extends Component{
 
   render(){
   //show titties
-  console.log(this.props);
+    console.log('titties', this.props);
+    let count = 0;
 
     return(
       <div className="row">
@@ -55,7 +56,16 @@ class AuthForm extends Component{
 
           <br/>
             {(this.props.error.length > 0) && (
-                <div className="card-panel red lighten-2">{this.props.error} <br/></div>
+                <ul className="card-panel red collection">{
+
+                  this.props.error.map(err => {
+                    count ++;
+                    console.log(err)
+                    return(<li
+                        className="collection-item red "
+                        key={count}>{err}</li>)
+                  })
+                }</ul>
             )}
 
           <button
