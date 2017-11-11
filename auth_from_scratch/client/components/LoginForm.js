@@ -17,6 +17,19 @@ class LoginForm extends Component{
     }
   }
 
+  componentWillUpdate(nextProps){
+    //this.props //old props
+    //nextProps // neext props when componentWillUpdate
+
+
+    //strip
+    //console.log('props',this.props);
+    //console.log('nextPRops',nextProps
+    if(!this.props.data.user && nextProps.data.user){
+      hashHistory.push('/dashboard');
+    }
+}
+
 
   onSubmit({email,password}){ //ES2015 here
 
@@ -29,13 +42,10 @@ class LoginForm extends Component{
     //this then is dealing with race conditions
     //refetchQueries might take up to 5 seconds
       .then((res)=> {
-        console.log(res)
+        //console.log(res)
         //only redirect if user login success
         this.setState({errors: []});
-        hashHistory.push('/dashboard');
-
       })
-
       .catch((error) => {
         const errors = error.graphQLErrors.map((err) => {return err.message});
         this.setState({ errors : errors })
@@ -69,4 +79,6 @@ class LoginForm extends Component{
 //     graphql(showUserQuery)(LoginForm)
 // );
 
-export default graphql(loginUserMutation)(LoginForm);
+export default graphql(showUserQuery)(
+  graphql(loginUserMutation)(LoginForm)
+);

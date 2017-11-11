@@ -16,6 +16,19 @@ class SignupForm extends Component{
     }
   }
 
+  componentWillUpdate(nextProps){
+    //this.props //old props
+    //nextProps // neext props when componentWillUpdate
+
+
+    //strip
+    //console.log('props',this.props);
+    //console.log('nextPRops',nextProps
+    if(!this.props.data.user && nextProps.data.user){
+      hashHistory.push('/dashboard');
+    }
+}
+
   onSubmit({email, password}){
 
     this.props.mutate({
@@ -23,7 +36,6 @@ class SignupForm extends Component{
         refetchQueries: [{query: showUserQuery}]
     }).then((res) => {
         this.setState({errors: []});
-        hashHistory.push('/dashboard');
     }).catch((error) => {
         const errors = error.graphQLErrors.map((err) => {return err.message});
         this.setState({ errors : errors })
