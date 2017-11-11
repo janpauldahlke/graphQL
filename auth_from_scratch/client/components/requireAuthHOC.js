@@ -10,18 +10,6 @@ import showUserQuery from './../queries/showUser.js';
 export default (WrappedComponent) => {
   class RequireAuth extends Component{
 
-    // componentDidMount(){
-    //   //titties
-    //   //console.log('tittes', this.props)
-    //
-    //   //check user if not redirect
-    //   //this would work
-    //     if(!this.props.loading && isNullOrUndefined(this.props.data.user)){
-    //         hashHistory.push('/login')
-    //     }
-    //   }
-
-
       componentWillUpdate(nextProps){
         if(!nextProps.data.loading && isNullOrUndefined(nextProps.data.user)){
           hashHistory.push('/login');
