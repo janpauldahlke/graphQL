@@ -25,9 +25,15 @@ class LoginForm extends Component{
         refetchQueries: [{query: showUserQuery}]
 
     })
+
+    //this then is dealing with race conditions
+    //refetchQueries might take up to 5 seconds
       .then((res)=> {
+        console.log(res)
+        //only redirect if user login success
         this.setState({errors: []});
         hashHistory.push('/dashboard');
+
       })
 
       .catch((error) => {

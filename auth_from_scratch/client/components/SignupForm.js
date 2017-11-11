@@ -23,7 +23,7 @@ class SignupForm extends Component{
         refetchQueries: [{query: showUserQuery}]
     }).then((res) => {
         this.setState({errors: []});
-        hashHistory.push('/success');
+        hashHistory.push('/dashboard');
     }).catch((error) => {
         const errors = error.graphQLErrors.map((err) => {return err.message});
         this.setState({ errors : errors })
