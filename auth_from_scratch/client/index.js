@@ -12,6 +12,8 @@ import Dashboard from "./components/Dashboard.js";
 import Welcome from './components/Welcome.js';
 import Success from './components/Success.js';
 
+import requireAuth from './components/requireAuthHOC.js';
+
 const netWorkInterface = createNetworkInterface({
     uri: '/graphql',// this refers to auth_from_scratch/server/server.js line 53 '/graphql'
     //opts realy matter here and same origin points to same localhost
@@ -33,7 +35,7 @@ const Root = () => {
                 <IndexRoute component={Welcome} />
                 <Route path="login" component={LoginForm} />
                 <Route path="signup" component={SignupForm} />
-                <Route path="dashboard" component={Dashboard} />
+                <Route path="dashboard" component={requireAuth(Dashboard)} />
               {/*   <Route path="success" component={Success} /> */}
               </Route>
           </Router>
